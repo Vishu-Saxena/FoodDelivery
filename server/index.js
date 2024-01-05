@@ -2,16 +2,20 @@ const express = require("express");
 const userRoute = require("./router/routeuser");
 // importing connection function
 const DB_connection = require("./dbconn");
+const dotenv = require("dotenv");
+dotenv.config();
 
 const app = express();
+app.use(express.json());
 
 DB_connection(); // invoked databse connection
 app.get('/' , (req ,res)=>{
-    res.send("Hi")
+    res.send("Hi");
 });
 
 app.use('/api/user' , userRoute);
 
-app.listen(3000 , ()=>{
-    console.log("server running on port no 3000");
+const PORT = process.env.PORT || 3000;
+app.listen(PORT , ()=>{
+    console.log("server running on port no " + PORT);
 })

@@ -1,10 +1,12 @@
 const mongoose = require("mongoose");
+const dotenv = require("dotenv");
+dotenv.config();
 
 const DB_connection = async()=>{
     try {
-        await mongoose.connect("mongodb+srv://vishusaxena3110:YQ6VkkcfRKXsAezE@cluster0.ces9ye1.mongodb.net/goFood");
+        await mongoose.connect(process.env.CONNECTIONSTRING);
         console.log("connected to database");
-        const fetched_data = await mongoose.connection.db.collection("foodSample");
+        // const fetched_data = await mongoose.connection.db.collection("foodSample");
         // const data = await fetched_data.find({}).toArray();
         // if(data){
         //     console.log(data);
