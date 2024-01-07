@@ -1,7 +1,9 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useLocation } from 'react-router-dom'
 
 const Navbar = () => {
+    const location = useLocation().pathname;
+    console.log(location);
   return (
     <>
     <nav className="navbar navbar-expand-lg navbar-dark" style={{'background' :"#CC313D"}}>
@@ -13,21 +15,24 @@ const Navbar = () => {
             <div className="collapse navbar-collapse" id="navbarSupportedContent">
             <ul className="navbar-nav me-auto mb-2 mb-lg-0">
                 <li className="nav-item">
-                <Link className="nav-link active" aria-current="page" to={'/'}> Home</Link>
+                <Link className={`nav-link ${location==="/"? "active" : ""}`} aria-current="page" to={'/'}> Home</Link>
                 </li>
                 <li className="nav-item">
-                <Link className="nav-link" to={'/signin'}>Sign-in</Link>
+                <Link className={`nav-link ${location==="/signup"? "active" : ""}`} to={'/signup'}>Sign-up</Link>
+                </li>
+                <li className="nav-item">
+                <Link className={`nav-link ${location==="/signin"? "active" : ""}`} to={'/signin'}>Login</Link>
                 </li>
                 <li className="nav-item dropdown">
                 <Link className="nav-link dropdown-toggle" to={'/'} role="button" data-bs-toggle="dropdown" aria-expanded="false">
                     Dropdown
                 </Link>
-                <ul className="dropdown-menu">
+                {/* <ul className="dropdown-menu">
                     <li><a className="dropdown-item" to={'/'}>Action</a></li>
                     <li><a className="dropdown-item" to={'/'}>Another action</a></li>
                     <li><hr className="dropdown-divider"/></li>
                     <li><a className="dropdown-item" to={'/'}>Something else here</a></li>
-                </ul>
+                </ul> */}
                 </li>
                
             </ul>

@@ -21,7 +21,7 @@ router.post("/signup" , async(req ,res)=>{
             location : location
             
         })
-        res.status(200).json({message : data , success : true});
+        res.status(200).json({message : data , success : true , message : "user signed up successfuly"});
     } catch (error) {
         console.log(error);
         res.send({message : "error in sign up route" , success : false})
@@ -32,12 +32,13 @@ router.post("/login" , async(req ,res)=>{
     try {
         const {email , password} = req.body; //getting user data 
         const checkUser = await user.findOne({email}); //finding user with given email
-        if(!checkUser){
-            return res.status(400).json({message : "Wrong credentials" , success : false})
+
+        if(checkUser === null){
+            return res.status(200).json({message : "Wrong credentials" , success : false})
         }
         const ismatch = await comparePassword(password , checkUser.password);
         if(!ismatch){
-            return res.status(400).json({message : "Wrong credentials" , success : false});
+            return res.status(200).json({message : "Wrong credentials" , success : false});
         }
         const data = {
            userInfo : {
