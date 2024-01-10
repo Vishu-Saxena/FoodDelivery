@@ -57,8 +57,6 @@ const Sigup = () => {
           <div className="mt-4 btncenter">
             <button type="submit" className="btn btn-outline-danger" onClick={handleSubmit} style={{'margin' : 'auto' , 'fontWeight' : "bold"}}>Sign_Up</button>
           </div> 
-
-          
         </form>
       </div>
       </div>

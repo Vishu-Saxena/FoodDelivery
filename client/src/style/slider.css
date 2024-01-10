@@ -1,0 +1,42 @@
+/* Slider.css */
+
+.slider-container {
+    position: relative;
+    width: 80%;
+    margin: auto;
+    overflow: hidden;
+  }
+  
+  .slider {
+    display: flex;
+    transition: transform 0.5s ease-in-out;
+  }
+  
+  .slide {
+    min-width: 100%;
+    box-sizing: border-box;
+  }
+  
+  .arrow {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    cursor: pointer;
+    font-size: 24px;
+    color: #333;
+  }
+  
+  .prev {
+    left: 10px;
+  }
+  
+  .next {
+    right: 10px;
+  }
+  
+  /* Add this class for the sliding effect */
+  .slide.active {
+    opacity: 1;
+    transform: translateX(0);
+  }
+  

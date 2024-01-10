@@ -1,0 +1,18 @@
+.card2{
+    height: 19rem;
+    border:  red 1px solid;
+    width: 16rem;
+    padding: 0px;
+    margin: 0px;
+}
+.card2 img{
+    width: 100%;
+    height: 10rem;
+}
+.card-title{
+    font-weight: 700 !important;
+    font-size: 1rem !important;
+}
+.bdtext{
+    font-size: 0.8rem;
+}

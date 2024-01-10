@@ -1,5 +1,6 @@
 const express = require("express");
 const userRoute = require("./router/routeuser");
+const foodRoute = require("./router/foodroute");
 const cors = require('cors')
 // importing connection function
 const DB_connection = require("./dbconn");
@@ -16,6 +17,7 @@ app.get('/' , (req ,res)=>{
 });
 
 app.use('/api/user' , userRoute);
+app.use('/api/food' , foodRoute);
 
 const PORT = process.env.PORT || 3000;
 app.listen(PORT , ()=>{
