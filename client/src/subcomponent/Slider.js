@@ -1,36 +1,22 @@
 import React, { useState } from 'react'
 import '../style/slider.css';
 import { useFoodContext } from '../context/FoodData';
+import SlideCompo from './SlideCompo';
 const Slider = () => {
-   const{categories} = useFoodContext();
-   const [currentIndex, setCurrentIndex] = useState(0);
-
-  const showSlide = (index) => {
-    const newIndex = (index + categories.length) % categories.length; // Wrap around for infinite loop
-    setCurrentIndex(newIndex);
-  };
-
-  const prevSlide = () => {
-    showSlide(currentIndex - 1);
-  };
-
-  const nextSlide = () => {
-    showSlide(currentIndex + 1);
-  };
-
+   const {categories} =useFoodContext();
   return(
-    <div className="slider-container">
-    <div className="slider">
-      {categories.map((category, index) => (
-        <div key={index} className={`slide ${index === currentIndex ? 'active' : ''}`}>
-          {category.CategoryName}
+    <>
+      <div className="container border mt-4">
+        
+        <div className="row d-flex justify-content-center border">
+          <div className="col-md-10"><h2 className='text-center'> <span className='text-danger'>What's on </span>your mind ?</h2> </div>
+        
+        <div className="col-md-10 d-flex justify-content-between bx">
+        {categories.map((cat)=><SlideCompo category = {cat}/>)}
         </div>
-      ))}
-    </div>
-
-    <div className="arrow prev" onClick={prevSlide}>&#10094;</div>
-    <div className="arrow next" onClick={nextSlide}>&#10095;</div>
-  </div>
+        </div>
+      </div>
+    </>
   )
 }
 

@@ -1,9 +1,18 @@
 import React from 'react'
 import { Link, useLocation } from 'react-router-dom'
+import { useAuthContext } from '../context/AuthContext';
 
 const Navbar = () => {
+    const {isAuthorized , setToken , setAuth} = useAuthContext();
+    console.log(isAuthorized);
     const location = useLocation().pathname;
     console.log(location);
+
+    const logOut = ()=> {
+        localStorage.removeItem("token");
+        setToken("");
+        setAuth(false);
+    }
   return (
     <>
     <nav className="navbar navbar-expand-lg navbar-dark" style={{'background' :"#CC313D"}}>
@@ -17,16 +26,19 @@ const Navbar = () => {
                 <li className="nav-item">
                 <Link className={`nav-link ${location==="/"? "active" : ""}`} aria-current="page" to={'/'}> Home</Link>
                 </li>
-                <li className="nav-item">
+                {isAuthorized ? <li className="nav-item">
+                <Link className={`nav-link ${location==="/signup"? "active" : ""}`} to={'/signup'} onClick={logOut}>logout</Link>
+                </li> : <><li className="nav-item">
                 <Link className={`nav-link ${location==="/signup"? "active" : ""}`} to={'/signup'}>Sign-up</Link>
                 </li>
                 <li className="nav-item">
                 <Link className={`nav-link ${location==="/signin"? "active" : ""}`} to={'/signin'}>Login</Link>
-                </li>
+                </li></>}
+                
                 <li className="nav-item dropdown">
-                <Link className="nav-link dropdown-toggle" to={'/'} role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                {/* <Link className="nav-link dropdown-toggle" to={'/'} role="button" data-bs-toggle="dropdown" aria-expanded="false">
                     Dropdown
-                </Link>
+                </Link> */}
                 {/* <ul className="dropdown-menu">
                     <li><a className="dropdown-item" to={'/'}>Action</a></li>
                     <li><a className="dropdown-item" to={'/'}>Another action</a></li>

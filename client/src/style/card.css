@@ -1,9 +1,18 @@
 .card2{
     height: 19rem;
     border:  red 1px solid;
-    width: 16rem;
+    width: 18rem;
     padding: 0px;
-    margin: 0px;
+    margin-top: 1rem;
+    width: 100%;
+    margin: auto; 
+    overflow: hidden;
+    padding-bottom: 0.1rem;
+    cursor: pointer;
+    border : none;
+}
+.card2:hover{
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.562);
 }
 .card2 img{
     width: 100%;
@@ -15,4 +24,20 @@
 }
 .bdtext{
     font-size: 0.8rem;
+}
+.btnmore{
+    font-weight: 800;
+    font-size: 1.5rem;
+}
+.btnmore:hover{
+    cursor: pointer;
+
+}
+
+@media screen and (max-width : 825px) {
+    .btntext{
+        font-size: 0.6rem;
+    }
+    
+   
 }

@@ -1,17 +1,18 @@
-import React from 'react'
 import Head from '../subcomponent/Head'
-import FoodCard from '../subcomponent/FoodCard'
 import { useFoodContext } from '../context/FoodData'
-import Slider from '../subcomponent/Slider'
 import HomeBody from '../subcomponent/HomeBody'
+import Footer from './Footer'
+import Slider from '../subcomponent/Slider'
 
 const Home = () => {
   const {allFood } = useFoodContext();
   return (
     <>
     <Head/>
-
+    <Slider/>
     <HomeBody/>
+
+    <Footer/>
 
     {/* <FoodCard/>
     {allFood? allFood.map((food)=> <FoodCard food={food}/> ) : ""} */}

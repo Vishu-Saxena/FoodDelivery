@@ -3,6 +3,8 @@ import Navbar from "./component/Navbar";
 import { Route , Routes } from "react-router-dom";
 import Signin from "./component/Signin";
 import Sigup from "./component/Sigup";
+import Particular from "./component/Particular";
+import DetailedFood from "./component/DetailedFood";
 function App() {
   return (
     <div>
@@ -11,6 +13,8 @@ function App() {
         <Route path="/" element={<Home/>}/>
         <Route path="/signin" element={<Signin/>}/>
         <Route path="/signup" element={<Sigup/>}/>
+        <Route path="/category/:categoryname" element={<Particular/>}/>
+        <Route path="/Zfood/:id" element={<DetailedFood/>}/>
         <Route path="*" element={<Home/>}/>
       </Routes>
     </div>

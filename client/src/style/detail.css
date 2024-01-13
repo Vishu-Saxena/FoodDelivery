@@ -1,0 +1,15 @@
+*{
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+}
+.dbx{
+    height: 15rem;
+}
+.dimgbx{
+    height: 15rem;
+}
+.dimgbx img{
+    width: 100%;
+    height: 100%;
+}

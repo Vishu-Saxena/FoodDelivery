@@ -5,14 +5,17 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { BrowserRouter } from "react-router-dom";
 import FoodVal from './context/FoodData';
+import AuthValue from './context/AuthContext';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
     <BrowserRouter>
+    <AuthValue>
     <FoodVal>
     <App />
     </FoodVal>
+    </AuthValue>
     </BrowserRouter>
   </React.StrictMode>
 );

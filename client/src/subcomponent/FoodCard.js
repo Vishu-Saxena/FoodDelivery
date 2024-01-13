@@ -4,13 +4,14 @@ import {MdOutlineStar} from 'react-icons/md';
 
 const FoodCard = (props) => {
   const {name , description , img , restaurentName , ratings , CategoryName , options} = props.food;
-  console.log(options[0]);
+  // console.log(options[0]);
   var result = Object.keys(options[0]).map((key) => [key, options[0][key]]);
-console.log(result);
-  const [types , setType]= useState( options? Object.keys(options[0]) : []);
-  const [price , setPrice] = useState(options ? Object.values(options[0]) : []);
+// console.log(result);
+  // const [types , setType]= useState( options? Object.keys(options[0]) : []);
+  // const [price , setPrice] = useState(options ? Object.values(options[0]) : []);
   return (
-    <div className="card card2 col-md-3 col-sm-4 col-11 mt-2">
+    <div className='col-xl-3 col-md-4 col-sm-6 col-12 mt-3'>
+    <div className="card card2 ">
         <img src={img} className="card-img-top" alt="..."/>
         <div className="card-body">
           <div className="row border">
@@ -21,7 +22,7 @@ console.log(result);
             {/* <p className="card-text">{description.slice(0 , 50)}</p> */}
             <div className="row">
               <div className="col-5 border text-start"> <p className='bdtext'>{CategoryName} </p> </div>
-              <div className="col-7 border text-end"> <p className='bdtext'>{restaurentName} </p> </div>
+              <div className="col-7 border text-end"> <p className='bdtext'>{restaurentName.slice(0,15)} </p> </div>
             </div>
             <div className="row">
                 <div className="col-6 border text-start"> 
@@ -34,10 +35,11 @@ console.log(result);
                     </div>
                   </div>
                 </div>
-                <div className="col-6 border text-end d-flex justify-content-end align-items-center"> <button type="button" class="btn btn-danger btn-sm">More details</button>
+                <div className="col-6 border text-end d-flex justify-content-end align-items-center"> <button type="button" class="btn btn-danger btn-sm btntext">More details</button>
                 </div>
             </div>
         </div>
+    </div>
     </div>
   )
 }

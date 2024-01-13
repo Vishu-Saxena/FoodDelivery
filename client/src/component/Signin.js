@@ -2,10 +2,12 @@ import React, { useState } from 'react'
 import '../style/signin.css'
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
+import { useAuthContext } from '../context/AuthContext';
 
 const Signin = () => {
   const [user , setUser] = useState({});
   const navigate = useNavigate();
+  const {setToken , setAuth} = useAuthContext();
 
   const handleInput=(e)=>{
     try {
@@ -25,6 +27,7 @@ const Signin = () => {
       if(res.data.success){
         window.alert("Logged in successfully");
         localStorage.setItem("token" , JSON.stringify(res.data.authtoken));
+        setAuth(true);
         navigate('/')
       }else{
         window.alert(res.data.message);
