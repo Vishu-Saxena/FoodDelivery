@@ -26,14 +26,6 @@ const Navbar = () => {
                 <li className="nav-item">
                 <Link className={`nav-link ${location==="/"? "active" : ""}`} aria-current="page" to={'/'}> Home</Link>
                 </li>
-                {isAuthorized ? <li className="nav-item">
-                <Link className={`nav-link ${location==="/signup"? "active" : ""}`} to={'/signup'} onClick={logOut}>logout</Link>
-                </li> : <><li className="nav-item">
-                <Link className={`nav-link ${location==="/signup"? "active" : ""}`} to={'/signup'}>Sign-up</Link>
-                </li>
-                <li className="nav-item">
-                <Link className={`nav-link ${location==="/signin"? "active" : ""}`} to={'/signin'}>Login</Link>
-                </li></>}
                 
                 <li className="nav-item dropdown">
                 {/* <Link className="nav-link dropdown-toggle" to={'/'} role="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -48,10 +40,15 @@ const Navbar = () => {
                 </li>
                
             </ul>
-            <form className="d-flex" role="search">
-                <input className="form-control me-2" type="search" placeholder="Search" aria-label="Search"/>
-                <button className="btn btn-outline-success" type="submit">Search</button>
-            </form>
+            <div className="d-flex">
+
+               {isAuthorized ? <><Link className={`btn bg-white text-danger mx-2 ${location==="/signup"? "active" : ""}`} to={'/signup'} onClick={logOut}>My Plate</Link>
+                <Link className={`btn bg-dark text-danger ${location==="/signup"? "active" : ""}`} to={'/signup'} onClick={logOut}>logout</Link></>  :
+               <> <Link className={`btn bg-white text-danger mx-2 ${location==="/signup"? "active" : ""}`} to={'/signup'}>Sign-up</Link>
+   
+                <Link className={`btn bg-white text-danger ${location==="/signin"? "active" : ""}`} to={'/signin'}>Login</Link></> }
+   
+            </div>
             </div>
         </div>
     </nav>

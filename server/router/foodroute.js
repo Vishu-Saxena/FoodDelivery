@@ -52,15 +52,16 @@ router.get('/foodofsinglesamecat/:catname' , async (req , res)=>{
 // route to get this food item as per given id
 router.get("/getsingleFood/:id" , async(req , res)=>{
     try {
-        const {id} = req.params;
+        
+        var id = new mongoose.Types.ObjectId( req.params.id);
         console.log(id);
-        const foodData =await mongoose.connection.db.collection("foodSample");
-        const data = await foodData.find({_id : id}).toArray();
-        console.log(data);
-        if(data.length){
-            return res.send({success : true , data});
+        const foodSingle = await mongoose.connection.db.collection("foodSample");
+        const foodData = await foodSingle.find({_id : id}).toArray();
+        // console.log(data);
+        if(foodData.length){
+            return res.send({success : true , foodData});
         }
-        return res.send({success:false , message : "Nothing is found for this Id"});
+        return res.send({success:false , message : "Nothing is found for this Id" , foodData});
     } catch (error) {
         console.log(error);
         res.send({message : "error in getsingleFood route" , success: false})
