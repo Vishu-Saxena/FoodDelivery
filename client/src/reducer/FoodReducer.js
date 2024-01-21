@@ -1,5 +1,5 @@
 const AllFoodReducer = (state , action)=>{
-    console.log(state , action);
+    // console.log(state , action);
     const PartyCategry = ['Momos' , 'Pizza' ,'Cake' , 'Starter'];
     switch (action.type) {
         case "ALL":

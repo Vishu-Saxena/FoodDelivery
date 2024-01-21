@@ -11,11 +11,6 @@ const Home = () => {
     <Head/>
     <Slider/>
     <HomeBody/>
-
-    <Footer/>
-
-    {/* <FoodCard/>
-    {allFood? allFood.map((food)=> <FoodCard food={food}/> ) : ""} */}
     </>
   )
 }

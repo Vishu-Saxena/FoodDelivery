@@ -5,6 +5,8 @@ import Signin from "./component/Signin";
 import Sigup from "./component/Sigup";
 import Particular from "./component/Particular";
 import DetailedFood from "./component/DetailedFood";
+import CartPage from "./component/CartPage";
+import Footer from "./component/Footer";
 function App() {
   return (
     <div>
@@ -15,8 +17,10 @@ function App() {
         <Route path="/signup" element={<Sigup/>}/>
         <Route path="/category/:categoryname" element={<Particular/>}/>
         <Route path="/Zfood/:id" element={<DetailedFood/>}/>
+        <Route path="/cart" element={<CartPage/>}/>
         <Route path="*" element={<Home/>}/>
       </Routes>
+      <Footer/>
     </div>
   );
 }

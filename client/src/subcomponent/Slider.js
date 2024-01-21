@@ -6,9 +6,9 @@ const Slider = () => {
    const {categories} =useFoodContext();
   return(
     <>
-      <div className="container border mt-4">
+      <div className="container mt-4">
         
-        <div className="row d-flex justify-content-center border">
+        <div className="row d-flex justify-content-center">
           <div className="col-md-10"><h2 className='text-center'> <span className='text-danger'>What's on </span>your mind ?</h2> </div>
         
         <div className="col-md-10 d-flex justify-content-between bx">

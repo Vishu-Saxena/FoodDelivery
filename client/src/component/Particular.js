@@ -27,7 +27,7 @@ const Particular = () => {
         getthedata();
     },[]);
   return (
-    <div className='container mt-3'>
+    <div className='container mt-3' style={{'minHeight' : "22rem"}}>
         <div className="row d-flex justify-content-center">
         <h1 className='text-center' style={{'textDecoration' : "underline red 4px"}} > {categoryname} </h1>
         { Fooditms.length ? Fooditms.map((itm , indx)=> <FoodCard key={indx} food = {itm} />)  : <h1 className='text-secondary text-center my-3' style={{'fontSize' : "1.4rem"}}> We don't have food items for this category, We will soon update our kitchen. Thank You! </h1>}

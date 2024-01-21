@@ -5,7 +5,7 @@ const SlideCompo = (props) => {
     
   return (
     <div className='slide' style={{width : "10rem"}}>
-        <div className="border d-flex justify-content-center flex-column">
+        <div className="d-flex justify-content-center flex-column">
       <Link to={`/category/${props.category.CategoryName}`}> <img className='slideimg' src={props.category.image} alt="" /></Link>
       <p className="text-center text-secondary"> {props.category.CategoryName} </p>
       </div>

@@ -13,14 +13,14 @@ const FoodVal = (props)=>{
         Party : []
     }
     const [state , dispatch] = useReducer(reducer , initialState);
-    console.log(state);
+    // console.log(state);
     const getallFood = async()=>{
         try {
             const res = await axios.get("http://localhost:8080/api/food/getFooditems");
             if(res?.data?.success){
                return dispatch({type: "ALL" , payload : res.data.data});
             }else{
-                console.log(res);
+                // console.log(res);
                 return window.alert("some internal error has occured please try again latter.");
                 
             }

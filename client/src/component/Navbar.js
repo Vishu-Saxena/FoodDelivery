@@ -1,12 +1,14 @@
 import React from 'react'
 import { Link, useLocation } from 'react-router-dom'
 import { useAuthContext } from '../context/AuthContext';
+import { useCartContext } from '../context/CartContentext';
 
 const Navbar = () => {
     const {isAuthorized , setToken , setAuth} = useAuthContext();
-    console.log(isAuthorized);
+    const {total_items} = useCartContext();
+    // console.log(isAuthorized);
     const location = useLocation().pathname;
-    console.log(location);
+    // console.log(location);
 
     const logOut = ()=> {
         localStorage.removeItem("token");
@@ -42,7 +44,8 @@ const Navbar = () => {
             </ul>
             <div className="d-flex">
 
-               {isAuthorized ? <><Link className={`btn bg-white text-danger mx-2 ${location==="/signup"? "active" : ""}`} to={'/signup'} onClick={logOut}>My Plate</Link>
+               {isAuthorized ? <><Link className={`btn bg-white text-danger mx-3 position-relative`} to={'/cart'}>My Plate<span className="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-info mt-1 me-1"> {total_items} </span> </Link>
+
                 <Link className={`btn bg-dark text-danger ${location==="/signup"? "active" : ""}`} to={'/signup'} onClick={logOut}>logout</Link></>  :
                <> <Link className={`btn bg-white text-danger mx-2 ${location==="/signup"? "active" : ""}`} to={'/signup'}>Sign-up</Link>
    
