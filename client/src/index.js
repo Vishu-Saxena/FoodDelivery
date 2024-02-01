@@ -7,6 +7,7 @@ import { BrowserRouter } from "react-router-dom";
 import FoodVal from './context/FoodData';
 import AuthValue from './context/AuthContext';
 import CartValue from './context/CartContentext';
+import OderHisVal from './context/OdrHistContext';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
@@ -15,7 +16,9 @@ root.render(
     <AuthValue>
     <FoodVal>
       <CartValue>
+        <OderHisVal>
         <App />
+        </OderHisVal>
       </CartValue>
     </FoodVal>
     </AuthValue>

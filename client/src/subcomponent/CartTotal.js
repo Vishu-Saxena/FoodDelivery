@@ -1,6 +1,7 @@
 import { useCartContext } from "../context/CartContentext";
+import Payment from "./Payment";
 
-const CartTotal = () => {
+const CartTotal = ({clientToken , cart , setInstance , handlePayment }) => {
     const {total_amount , shipping_fee} = useCartContext();
     console.log(total_amount , shipping_fee);
     
@@ -12,6 +13,8 @@ const CartTotal = () => {
             {shipping_fee !== 0 ? <p className='smlTxt text-center'> Shop above 500 to get free shipping </p> : null}
             <hr />
             <div className='d-flex justify-content-between '><p>OrderTotal : </p>  <p> Rs {total_amount + shipping_fee} </p> </div>
+            <Payment clientToken ={clientToken}  cart ={cart} setInstance = {setInstance} handlePayment ={handlePayment}/>
+
         </div>
     </div>
   )

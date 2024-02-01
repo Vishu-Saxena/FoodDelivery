@@ -1,6 +1,7 @@
 const express = require("express");
 const userRoute = require("./router/routeuser");
 const foodRoute = require("./router/foodroute");
+const orderHistory = require('./router/orderRoute')
 const cors = require('cors')
 // importing connection function
 const DB_connection = require("./dbconn");
@@ -18,6 +19,7 @@ app.get('/' , (req ,res)=>{
 
 app.use('/api/user' , userRoute);
 app.use('/api/food' , foodRoute);
+app.use('/api/ordershistory' , orderHistory);
 
 const PORT = process.env.PORT || 3000;
 app.listen(PORT , ()=>{

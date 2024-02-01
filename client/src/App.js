@@ -7,6 +7,7 @@ import Particular from "./component/Particular";
 import DetailedFood from "./component/DetailedFood";
 import CartPage from "./component/CartPage";
 import Footer from "./component/Footer";
+import Orders from "./subcomponent/Orders";
 function App() {
   return (
     <div>
@@ -18,6 +19,7 @@ function App() {
         <Route path="/category/:categoryname" element={<Particular/>}/>
         <Route path="/Zfood/:id" element={<DetailedFood/>}/>
         <Route path="/cart" element={<CartPage/>}/>
+        <Route path="/orders" element={<Orders/>} />
         <Route path="*" element={<Home/>}/>
       </Routes>
       <Footer/>

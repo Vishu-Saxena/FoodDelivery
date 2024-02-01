@@ -28,6 +28,9 @@ const Navbar = () => {
                 <li className="nav-item">
                 <Link className={`nav-link ${location==="/"? "active" : ""}`} aria-current="page" to={'/'}> Home</Link>
                 </li>
+                <li className="nav-item">
+                <Link className={`nav-link ${location==="/orders"? "active" : ""}`} aria-current="page" to={'/orders'}> Orders</Link>
+                </li>
                 
                 <li className="nav-item dropdown">
                 {/* <Link className="nav-link dropdown-toggle" to={'/'} role="button" data-bs-toggle="dropdown" aria-expanded="false">
