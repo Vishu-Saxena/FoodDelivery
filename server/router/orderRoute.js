@@ -24,7 +24,7 @@ router.post('/addOrders' , async(req , res)=>{
 // route to fetch the orders
 router.get('/getorders' , async(req ,res)=>{
     try {
-        const getOrders = await orders.find({});
+        const getOrders = await orders.find({}).sort({OrderDate : -1});
         if(getOrders.length){
            return res.send({message : "orders fetched successfully" , getOrders})
         }

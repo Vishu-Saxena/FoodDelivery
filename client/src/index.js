@@ -8,6 +8,7 @@ import FoodVal from './context/FoodData';
 import AuthValue from './context/AuthContext';
 import CartValue from './context/CartContentext';
 import OderHisVal from './context/OdrHistContext';
+import SearchVal from './context/SearchContext';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
@@ -17,7 +18,9 @@ root.render(
     <FoodVal>
       <CartValue>
         <OderHisVal>
-        <App />
+          <SearchVal>
+            <App />
+          </SearchVal>
         </OderHisVal>
       </CartValue>
     </FoodVal>

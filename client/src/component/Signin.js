@@ -7,7 +7,7 @@ import { useAuthContext } from '../context/AuthContext';
 const Signin = () => {
   const [user , setUser] = useState({});
   const navigate = useNavigate();
-  const {setToken , setAuth} = useAuthContext();
+  const {setToken , setAuth , location} = useAuthContext();
 
   const handleInput=(e)=>{
     try {
@@ -28,7 +28,12 @@ const Signin = () => {
         window.alert("Logged in successfully");
         localStorage.setItem("token" , JSON.stringify(res.data.authtoken));
         setAuth(true);
-        navigate('/')
+        if(location){
+          navigate(location);
+        }else{
+          navigate('/')
+        }
+        
       }else{
         window.alert(res.data.message);
       }

@@ -4,6 +4,7 @@ import {MdOutlineStar} from 'react-icons/md';
 import { Link } from 'react-router-dom';
 
 const FoodCard = (props) => {
+  
   const {name , description , img , restaurentName , ratings , CategoryName , options , _id} = props.food;
   // console.log(options[0]);
   var result = Object.keys(options[0]).map((key) => [key, options[0][key]]);
@@ -36,7 +37,7 @@ const FoodCard = (props) => {
                     </div>
                   </div>
                 </div>
-                <div className="col-6 text-end d-flex justify-content-end align-items-center"> <Link to={`/Zfood/${_id}`}> <button type="button" class="btn btn-danger btn-sm btntext">More details</button></Link>
+                <div className="col-6 text-end d-flex justify-content-end align-items-center">  <Link to={`/Zfood/${_id}`}> <button type="button" class="btn btn-danger btn-sm btntext">More details</button></Link>
                 </div>
             </div>
         </div>

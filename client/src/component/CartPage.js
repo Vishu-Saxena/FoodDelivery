@@ -10,7 +10,6 @@ import axios from 'axios';
 import { useOrderHistory } from '../context/OdrHistContext';
 
 const CartPage = () => {
-    
   const {cart ,Increment , Decrement , total_amount , total_items ,removeFromCart ,clearCart} = useCartContext();
   const{addOderHistory } = useOrderHistory();
   const [clientToken, setClientToken] = useState("");
@@ -40,6 +39,7 @@ const CartPage = () => {
       // localStorage.setItem("orderHistory" , JSON.stringify(cart));
       addOderHistory(cart);
       localStorage.setItem("cartData" , JSON.stringify([]));
+      clearCart();
       navigate("/orders");
       window.alert("Payment Completed Successfully")
     } catch (error) {

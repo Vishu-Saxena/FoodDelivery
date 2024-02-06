@@ -7,19 +7,23 @@ const orderHistoryContext = createContext();
 const OderHisVal = (props)=>{
     const name = "order"
     const [orderHist , setOrderhist] = useState([]);
+    const [loading , setLoading] = useState(true);
 
     // function to fetch to order history list
     const getorderhist=async()=>{
         try {
             const res = await axios.get('http://localhost:8080/api/ordershistory/getorders');
             if(res?.data?.getOrders){
-                setOrderhist(res.data.getOrders)
+                setOrderhist(res.data.getOrders);
+                setLoading(false);
             }else{
                 console.log(res);
+                setLoading(false);
             }
         } catch (error) {
             console.log(error);
             window.alert("error in getting orders history");
+            setLoading(true);
         }
     }
     // function to add orders to order history
@@ -45,7 +49,7 @@ const OderHisVal = (props)=>{
                 const res = await axios.delete(`http://localhost:8080/api/ordershistory/deleteOrder/${id}`);
                 if(res?.data?.success){
                     window.alert("deleted successfully");
-                    window.location.reload();
+                    // window.location.reload();
                 }
             }
         } catch (error) {
@@ -55,8 +59,8 @@ const OderHisVal = (props)=>{
     }
     useEffect(()=>{
         getorderhist();
-    },[orderHist , deleteOrder]);
-    return <orderHistoryContext.Provider value = {{name , orderHist , addOderHistory , deleteOrder}}> {props.children} </orderHistoryContext.Provider>
+    },[orderHist , deleteOrder ,addOderHistory]);
+    return <orderHistoryContext.Provider value = {{name , orderHist , addOderHistory , deleteOrder ,loading , setLoading}}> {props.children} </orderHistoryContext.Provider>
 }
 
 // creating custom context

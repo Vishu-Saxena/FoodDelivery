@@ -9,6 +9,7 @@ import CartPage from "./component/CartPage";
 import Footer from "./component/Footer";
 import Orders from "./subcomponent/Orders";
 function App() {
+  
   return (
     <div>
       <Navbar/>

@@ -4,23 +4,23 @@ import '../style/footer.css'
 const Footer = () => {
   return (
     <div className='container-fluid bg-dark'>
-      <h1 className='text-secondary heading py-2 text-center'> Explore the Samachar Bazar </h1>
+      <h1 className='text-secondary heading py-2 text-center'> Explore the FeastFinder </h1>
       <div className="row prntlinkdiv">
         <div className="col-sm-3 col-6 linkDiv" style={{'border' : "none"}}>
             <li className='links'> <Link to={'/'} className='link'> Home </Link> </li>
-            <li className='links'> <Link to={'/'} className='link'> Headlines </Link> </li>
+            <li className='links'> <Link to={'/orders'} className='link'> Orders </Link> </li>
          </div>
         <div className="col-sm-3 col-6 linkDiv"> 
-            <li className='links'> <Link to={'/'} className='link'> Entertainment </Link> </li>
-            <li className='links'> <Link to={'/'} className='link'> Health </Link> </li>
+            <li className='links'> <Link to={'/'} className='link'> Highest Ratings </Link> </li>
+            <li className='links'> <Link to={'/'} className='link'> Party Hit </Link> </li>
         </div>
         <div className="col-sm-3 col-6 linkDiv"> 
-            <li className='links'> <Link to={'/'} className='link'> Science </Link> </li>
-            <li className='links'> <Link to={'/'} className='link'> Business </Link> </li>
+            <li className='links'> <Link to={'/'} className='link'> Blogs </Link> </li>
+            <li className='links'> <Link to={'/'} className='link'> Parter With us </Link> </li>
         </div>
         <div className="col-sm-2 col-6 linkDiv">
-            <li className='links'> <Link to={'/'} className='link'> Sports </Link> </li>
-            <li className='links'> <Link to={'/'} className='link'> All </Link> </li> 
+            <li className='links'> <Link to={'/'} className='link'> Apps for you </Link> </li>
+            <li className='links'> <Link to={'/'} className='link'> Our Story </Link> </li> 
         </div>
       </div>
 
@@ -54,7 +54,7 @@ const Footer = () => {
       </div>
       <div className='row py-3'>
         {/* <img className='logo' src="./images/logo.png" alt="" style={{'margin' : "auto"}} /> */}
-        <h3 className='text-center text-danger'> Zomato </h3>
+        <h3 className='text-center text-danger'> FeastFinder </h3>
       </div>
     </div>
   )

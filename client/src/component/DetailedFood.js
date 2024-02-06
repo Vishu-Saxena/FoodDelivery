@@ -1,14 +1,18 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react'
-import { useNavigate, useParams } from 'react-router-dom';
+import { useLocation, useNavigate, useParams } from 'react-router-dom';
 import '../style/detail.css'
 import { FaArrowRight ,FaPlus , FaMinus} from "react-icons/fa";
 import { MdOutlineStar } from "react-icons/md";
 import FoodCard from '../subcomponent/FoodCard';
 import { useCartContext } from '../context/CartContentext';
+import { useAuthContext } from '../context/AuthContext';
 // import {addItm} from '../context/CartContentext'
 
 const DetailedFood = () => {
+  const {isAuthorized , setLocation} = useAuthContext();
+  
+  
     const {id} = useParams();
     const [fooditm , setItm] = useState();
     const [count , setCount] = useState(1);
@@ -79,8 +83,16 @@ const DetailedFood = () => {
       }
   }
 
+  let path = useLocation().pathname;
     useEffect(()=>{
-      details();
+      if(!isAuthorized){
+        setLocation(path);
+        window.alert("please login to your account first.")
+        navigate('/signin');
+      }else{
+        details();
+      }
+      
     },[]);
     useEffect(()=>{
       getthedata()

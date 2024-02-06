@@ -5,6 +5,7 @@ const AuthContext = createContext();
 const AuthValue = (props)=>{
     const [isAuthorized , setAuth] = useState(false);
     const [userToken , setToken] = useState( localStorage.getItem("token") ? localStorage.getItem("token") : "" );
+    const [location , setLocation] = useState('');
 
     useEffect(()=>{
         if(userToken){
@@ -12,7 +13,7 @@ const AuthValue = (props)=>{
         }
     },[]);
     
-    return <AuthContext.Provider value={{isAuthorized , setAuth , userToken , setToken}} > {props.children} </AuthContext.Provider>
+    return <AuthContext.Provider value={{isAuthorized , setAuth , userToken , setToken , location , setLocation}} > {props.children} </AuthContext.Provider>
 }
 
 // custom hook
