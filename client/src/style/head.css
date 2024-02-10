@@ -24,10 +24,15 @@
 }
 .headsearch{
     height: 50px;
-    width: 95%;
+    width: 82%;
     border-radius: 10px;
-    border: none;
-    
+    border: red 1px solid;
+    text-align: center;
+}
+
+.headsearch::placeholder{
+    text-align: center;
+    font-size: larger;
 }
 
 .searchbox{

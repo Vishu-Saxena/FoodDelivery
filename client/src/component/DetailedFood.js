@@ -10,7 +10,7 @@ import { useAuthContext } from '../context/AuthContext';
 // import {addItm} from '../context/CartContentext'
 
 const DetailedFood = () => {
-  const {isAuthorized , setLocation} = useAuthContext();
+  const {isAuthorized , CheckAuthentication} = useAuthContext();
   
   
     const {id} = useParams();
@@ -85,14 +85,12 @@ const DetailedFood = () => {
 
   let path = useLocation().pathname;
     useEffect(()=>{
-      if(!isAuthorized){
-        setLocation(path);
-        window.alert("please login to your account first.")
-        navigate('/signin');
-      }else{
-        details();
-      }
-      
+        if(!isAuthorized){
+          CheckAuthentication(path);
+        }else{
+          details();
+        }
+ 
     },[]);
     useEffect(()=>{
       getthedata()

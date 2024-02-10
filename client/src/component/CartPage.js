@@ -3,14 +3,16 @@ import {FaTrashAlt ,FaMinus , FaPlus} from 'react-icons/fa';
 import { useCartContext } from "../context/CartContentext"
 import "../style/cart.css"
 import CartTotal from '../subcomponent/CartTotal';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import EmptyCart from '../subcomponent/EmptyCart';
 import { useEffect, useState } from 'react';
 import axios from 'axios';
 import { useOrderHistory } from '../context/OdrHistContext';
+import { useAuthContext } from '../context/AuthContext';
 
 const CartPage = () => {
   const {cart ,Increment , Decrement , total_amount , total_items ,removeFromCart ,clearCart} = useCartContext();
+  const {isAuthorized , CheckAuthentication} = useAuthContext();
   const{addOderHistory } = useOrderHistory();
   const [clientToken, setClientToken] = useState("");
   const [instance, setInstance] = useState("");
@@ -47,8 +49,14 @@ const CartPage = () => {
     }
   };
 
+  let path = useLocation().pathname;
   useEffect(() => {
-    getToken();
+    if(!isAuthorized){
+      CheckAuthentication(path);
+    }else{
+      getToken();
+    }
+    
   }, []);
   return (
     <>
@@ -97,8 +105,6 @@ const CartPage = () => {
       {cart?.length ? <CartTotal clientToken ={clientToken}  cart ={cart} setInstance = {setInstance} handlePayment ={handlePayment}/> :""}
       
       </div>
-      <p> {total_amount } {total_items} </p>
-      {/* <Payment clientToken ={clientToken}  cart ={cart} setInstance = {setInstance} handlePayment ={handlePayment}/> */}
     </>
   )
 }

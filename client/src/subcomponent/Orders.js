@@ -3,11 +3,13 @@ import {FaTrashAlt} from 'react-icons/fa';
 
 import EmptyCart from './EmptyCart';
 import { useOrderHistory } from '../context/OdrHistContext';
+import { useLocation } from 'react-router-dom';
+import { useAuthContext } from '../context/AuthContext';
 
 const Orders = () => {
  
   const {orderHist , deleteOrder ,loading} = useOrderHistory();
-
+  const {isAuthorized , CheckAuthentication} = useAuthContext();
 
   const StatusTimer = (orderdate)=>{
     console.log(orderdate);
@@ -32,7 +34,12 @@ const Orders = () => {
 const [orderStatus , setStatus] = useState([]);
 // console.log(orderStatus);
 
+let path = useLocation().pathname;
 useEffect(()=>{
+  if(!isAuthorized){
+    CheckAuthentication(path);
+    return;
+  }
   let arr = [];
   if(orderHist.length){
     arr = orderHist.map((ele)=>{

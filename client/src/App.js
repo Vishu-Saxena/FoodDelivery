@@ -8,6 +8,7 @@ import DetailedFood from "./component/DetailedFood";
 import CartPage from "./component/CartPage";
 import Footer from "./component/Footer";
 import Orders from "./subcomponent/Orders";
+import SeachPage from "./component/SeachPage";
 function App() {
   
   return (
@@ -21,6 +22,7 @@ function App() {
         <Route path="/Zfood/:id" element={<DetailedFood/>}/>
         <Route path="/cart" element={<CartPage/>}/>
         <Route path="/orders" element={<Orders/>} />
+        <Route path="/search" element={<SeachPage/>} />
         <Route path="*" element={<Home/>}/>
       </Routes>
       <Footer/>

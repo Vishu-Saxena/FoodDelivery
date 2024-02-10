@@ -1,29 +1,27 @@
-import { createContext, useContext, useState } from "react";
+import { createContext, useContext, useEffect, useState } from "react";
 import { useFoodContext } from "./FoodData";
 
 const searchContext = createContext();
 
 const SearchVal =(props)=>{
+    const{allFood} = useFoodContext();
     const [search , setSearch] = useState("");
-    const [searchRes , setSRes] = useState([]);
-    const {allFood} = useFoodContext();
-    console.log(allFood);
-    // fucntion to change search text
-    const SearchTxt = (txt)=>{
-        setSearch(txt);
+    const [loading , setLoading] = useState(true);
+    console.log(search);
+    
+    const [searchResult, setResult] = useState([]);
+    console.log(searchResult);
+
+    const SearchRes =()=>{
+        setLoading(true);
+        let searcharr = allFood.filter((ele)=> ele.name.toLowerCase().includes(search.toLowerCase()) || ele.CategoryName.toLowerCase().split('-').includes(search.toLowerCase()) || ele.description.toLowerCase().includes(search.toLowerCase()));
+        if(searcharr.length){
+            setResult(searcharr)
+            setLoading(false);
+        }
     }
 
-    // fucntion to fetch the searched itm
-    const searchResult = (txt)=>{
-        console.log(txt);
-        let res1 = allFood.filter((ele)=> ele.CategoryName.toLowerCase().includes(txt));
-        let res2 = allFood.filter((ele)=> ele.name.toLowerCase().includes(txt));
-        let res3 = allFood.filter((ele)=> ele.description.toLowerCase().includes(txt));
-        console.log(res1 , res2 , res3);
-        setSRes([...res1 , ...res2 , ...res3]);
-    }
-
-    return <searchContext.Provider value={{search , SearchTxt , searchRes ,searchResult}}> {props.children} </searchContext.Provider>
+    return <searchContext.Provider value={{search , setSearch , searchResult ,SearchRes , loading}}> {props.children} </searchContext.Provider>
 }
 
 // custom context
