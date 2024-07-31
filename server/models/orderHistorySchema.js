@@ -23,6 +23,10 @@ const OrderSchema = new mongoose.Schema({
     OrderDate : {
         type : Date,
         default : Date.now()
+    },
+    userId : {
+        type : String, 
+        required : true
     }
 })
 module.exports = mongoose.model("orderHistory" , OrderSchema)

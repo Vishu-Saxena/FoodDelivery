@@ -3,7 +3,7 @@ import Payment from "./Payment";
 
 const CartTotal = ({clientToken , cart , setInstance , handlePayment }) => {
     const {total_amount , shipping_fee} = useCartContext();
-    console.log(total_amount , shipping_fee);
+    // console.log(total_amount , shipping_fee);
     
   return (
     <div className='row d-flex justify-content-end'>

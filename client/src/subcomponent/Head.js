@@ -20,8 +20,8 @@ const Head = () => {
         <h1 className='headingtxt'>FeastFinder</h1>
         <h2 className='headnortext'> Discover the best food and meals just in a blink</h2>
         <div className="searchbox">
-            <div className='d-flex bg-light justify-content-around align-items-center' style={{'borderRadius' : "10px"}}>
-                <CiSearch className='sicon text-secondary border' />
+            <div className='d-flex bg-light justify-content-around align-items-center' style={{'borderRadius' : "10px" , 'paddingRight' : "0.8rem" , 'paddingLeft' : "0.4rem"}}>
+                <CiSearch className='sicon text-secondary' />
                 <input className="headsearch border" type="search" placeholder="Search for your favourite cuisine or food" onChange={(e)=> setSearch(e.target.value) }/>
                 <button type="button" className="btn btn-outline-danger" onClick={handleOnclick}> Search </button>
             </div>

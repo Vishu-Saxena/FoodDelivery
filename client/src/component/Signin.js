@@ -7,25 +7,25 @@ import { useAuthContext } from '../context/AuthContext';
 const Signin = () => {
   const [user , setUser] = useState({});
   const navigate = useNavigate();
-  const {setToken , setAuth , location} = useAuthContext();
+  const {setToken , setAuth , location ,toastfn , errortoastfn} = useAuthContext();
 
   const handleInput=(e)=>{
     try {
       let {name , value} = e.target;
       setUser({...user , [name] : value});
-      console.log(user);
+      // console.log(user);
     } catch (error) {
       console.log(error);
-      window.alert("Some internal error has occured");
+      errortoastfn("Some internal error has occured");
     }
   }
   const handleSubmit= async(e)=>{
     e.preventDefault();
     try {
       const res = await axios.post("http://localhost:8080/api/user/login" , user);
-      console.log(res.data);
+      // console.log(res.data);
       if(res.data.success){
-        window.alert("Logged in successfully");
+        toastfn("Logged in successfully");
         localStorage.setItem("token" , JSON.stringify(res.data.authtoken));
         setAuth(true);
         if(location){
@@ -35,11 +35,12 @@ const Signin = () => {
         }
         
       }else{
-        window.alert(res.data.message);
+        // window.alert(res.data.message);
+        errortoastfn(res.data.message);
       }
     } catch (error) {
       console.log(error);
-      window.alert("some internal error has occured please try again latter")
+      errortoastfn("some internal error has occured please try again latter")
     }
   }
   return (

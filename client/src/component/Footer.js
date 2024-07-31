@@ -53,8 +53,8 @@ const Footer = () => {
         </div>
       </div>
       <div className='row py-3'>
-        {/* <img className='logo' src="./images/logo.png" alt="" style={{'margin' : "auto"}} /> */}
-        <h3 className='text-center text-danger'> FeastFinder </h3>
+        <img className='logo' src="./image/foodlogo.png" alt="" style={{'margin' : "auto"}} />
+        
       </div>
     </div>
   )

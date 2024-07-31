@@ -29,7 +29,7 @@ router.get('/getFooditems' , async(req , res)=>{
 })
 router.get('/getCategory' , async(req , res)=>{
     try {
-        const catData = await mongoose.connection.db.collection("category");
+        const catData =  mongoose.connection.db.collection("category");
         const data = await catData.find({}).toArray();
         if(data){
             console.log(data);

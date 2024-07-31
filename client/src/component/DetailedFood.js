@@ -10,7 +10,7 @@ import { useAuthContext } from '../context/AuthContext';
 // import {addItm} from '../context/CartContentext'
 
 const DetailedFood = () => {
-  const {isAuthorized , CheckAuthentication} = useAuthContext();
+  const {isAuthorized , CheckAuthentication ,toastfn , errortoastfn} = useAuthContext();
   
   
     const {id} = useParams();
@@ -42,7 +42,7 @@ const DetailedFood = () => {
         }
       } catch (error) {
         console.log(error);
-        window.alert("something went wront please try again latter")
+        errortoastfn("something went wront please try again latter")
       }
     }
 
@@ -50,7 +50,7 @@ const DetailedFood = () => {
     const handleSubmit = (e)=>{
       e.preventDefault();
       if(!price){
-        window.alert("Select the price");
+        errortoastfn("Select the price");
         return;
       }
 
@@ -79,7 +79,7 @@ const DetailedFood = () => {
           }
       } catch (error) {
           console.log(error);
-          window.alert("something went wrong , Please try again later.")
+          errortoastfn("something went wrong , Please try again later.")
       }
   }
 
@@ -99,7 +99,7 @@ const DetailedFood = () => {
     <div className='container' style={{'minHeight' : "22rem"}}>
       {fooditm ? <div className="row mt-5">
             <div className="col-md-5 dimg"> <img src={fooditm.img} alt="" /> </div>
-            <div className="col-md-7 border">
+            <div className="col-md-7">
               <h2 className='text-center' style={{'textDecoration' : "underline red 4px"}}> {fooditm.restaurentName} </h2>
               <p className='text-center dtxt text-secondary mt-2'>  {fooditm.name} {<FaArrowRight />} {fooditm.CategoryName} {<FaArrowRight/>} Ratings <span class="badge bg-danger">{fooditm.ratings} <MdOutlineStar className='mb-1'/> </span></p>
 

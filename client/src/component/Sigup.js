@@ -2,19 +2,21 @@ import React, { useState } from 'react'
 import "../style/sigup.css"
 import axios from "axios"
 import { useNavigate } from 'react-router-dom';
+import { useAuthContext } from '../context/AuthContext';
 
 const Sigup = () => {
-  const [user , setUser] = useState({});
+  const [user , setUser ] = useState({});
+const{ toastfn , errortoastfn } = useAuthContext();
   const navigate = useNavigate();
 
   const handleInput=(e)=>{
     try {
       let {name , value} = e.target;
       setUser({...user , [name] : value});
-      console.log(user);
+      // console.log(user);
     } catch (error) {
       console.log(error);
-      window.alert("Some internal error has occured");
+      errortoastfn("Some internal error has occured");
     }
   }
   const handleSubmit= async(e)=>{
@@ -22,14 +24,14 @@ const Sigup = () => {
     try {
       const res = await axios.post("http://localhost:8080/api/user/signup" , user);
       if(res?.data?.success){
-        window.alert("signed up successfuly");
+        toastfn("signed up successfuly");
         navigate('/signin');
       }else{
-        window.alert(res?.data?.message);
+        errortoastfn(res?.data?.message);
       }
     } catch (error) {
       console.log(error);
-      window.alert("some internal error has occured please try again latter")
+      errortoastfn("some internal error has occured please try again latter")
     }
   }
   return (

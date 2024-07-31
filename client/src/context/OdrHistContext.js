@@ -1,18 +1,21 @@
 import axios from "axios";
+import { useAuthContext } from "./AuthContext";
 
 const { createContext, useContext, useState, useEffect } = require("react");
 
 const orderHistoryContext = createContext();
 
+
 const OderHisVal = (props)=>{
     const name = "order"
     const [orderHist , setOrderhist] = useState([]);
     const [loading , setLoading] = useState(true);
+    const {userID} = useAuthContext()
 
     // function to fetch to order history list
-    const getorderhist=async()=>{
+    const getorderhist=async(userid)=>{
         try {
-            const res = await axios.get('http://localhost:8080/api/ordershistory/getorders');
+            const res = await axios.get(`http://localhost:8080/api/ordershistory/getorders/${userid}`);
             if(res?.data?.getOrders){
                 setOrderhist(res.data.getOrders);
                 setLoading(false);
@@ -27,17 +30,15 @@ const OderHisVal = (props)=>{
         }
     }
     // function to add orders to order history
-    const addOderHistory = (orderlist)=>{
-        if(orderlist){
-            orderlist.map(async(oder)=>{
-                const res= await axios.post("http://localhost:8080/api/ordershistory/addOrders" , {...oder} );
+    const addOderHistory = async(order)=>{
+        console.log("into oder history");
+        console.log(order);
+        const res= await axios.post("http://localhost:8080/api/ordershistory/addOrders" , {...order} );
                 if(!res?.data?.success){
                     console.log(res);
-                    window.alert("error in adding order to order history")
+                    
                 }
-            })
-        }
-        console.log(orderlist);
+        console.log(order);
     }
 
     // fucntion to delete the order from order history 
@@ -58,7 +59,7 @@ const OderHisVal = (props)=>{
         }
     }
     useEffect(()=>{
-        getorderhist();
+        getorderhist(userID);
     },[orderHist , deleteOrder ,addOderHistory]);
     return <orderHistoryContext.Provider value = {{name , orderHist , addOderHistory , deleteOrder ,loading , setLoading}}> {props.children} </orderHistoryContext.Provider>
 }

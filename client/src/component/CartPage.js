@@ -12,7 +12,8 @@ import { useAuthContext } from '../context/AuthContext';
 
 const CartPage = () => {
   const {cart ,Increment , Decrement , total_amount , total_items ,removeFromCart ,clearCart} = useCartContext();
-  const {isAuthorized , CheckAuthentication} = useAuthContext();
+  const {isAuthorized , CheckAuthentication ,toastfn , errortoastfn , userID} = useAuthContext();
+  // console.log(userID);
   const{addOderHistory } = useOrderHistory();
   const [clientToken, setClientToken] = useState("");
   const [instance, setInstance] = useState("");
@@ -36,16 +37,18 @@ const CartPage = () => {
         nonce,
         cart,
       });
-      console.log(data);
+      console.log(cart);
       // let orderId = cart.map((ele)=> ele.id );
       // localStorage.setItem("orderHistory" , JSON.stringify(cart));
-      addOderHistory(cart);
-      localStorage.setItem("cartData" , JSON.stringify([]));
+      cart.map((ele)=>addOderHistory({...ele , userId : userID}))
+      
+      localStorage.setItem("cartData" , JSON.stringify(cart));
       clearCart();
       navigate("/orders");
-      window.alert("Payment Completed Successfully")
+      toastfn("Payment Completed Successfully")
     } catch (error) {
       console.log(error);
+      errortoastfn("Something went wrong")
     }
   };
 

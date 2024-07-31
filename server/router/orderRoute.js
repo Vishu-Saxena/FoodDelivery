@@ -7,12 +7,13 @@ const mongoose = require("mongoose");
 
 router.post('/addOrders' , async(req , res)=>{
     try {
-        const {name , img , qty , price , subtotal} = req.body;
-        if(!name || !img || !qty || !price || !subtotal){
+        const {name , img , qty , price , subtotal , userId} = req.body;
+        console.log(req.body);
+        if(!name || !img || !qty || !price || !subtotal || !userId){
             return res.send({message : "Incomplete information" , success : false})
         }
 
-        const data =  await orders.create({name , img , quantity : qty , price , subtotal});
+        const data =  await orders.create({name , img , quantity : qty , price , subtotal , userId});
 
         res.status(200).json({message : data , success : true , message : "order saved successfuly"});
     } catch (error) {
@@ -22,9 +23,10 @@ router.post('/addOrders' , async(req , res)=>{
 } )
 
 // route to fetch the orders
-router.get('/getorders' , async(req ,res)=>{
+router.get('/getorders/:userid' , async(req ,res)=>{
     try {
-        const getOrders = await orders.find({}).sort({OrderDate : -1});
+        const {userid} = req.params;
+        const getOrders = await orders.find({userId : userid}).sort({OrderDate : -1});
         if(getOrders.length){
            return res.send({message : "orders fetched successfully" , getOrders})
         }

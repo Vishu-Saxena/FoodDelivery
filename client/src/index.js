@@ -9,6 +9,8 @@ import AuthValue from './context/AuthContext';
 import CartValue from './context/CartContentext';
 import OderHisVal from './context/OdrHistContext';
 import SearchVal from './context/SearchContext';
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
@@ -19,7 +21,9 @@ root.render(
       <CartValue>
         <OderHisVal>
           <SearchVal>
+          
             <App />
+            <ToastContainer/>
           </SearchVal>
         </OderHisVal>
       </CartValue>

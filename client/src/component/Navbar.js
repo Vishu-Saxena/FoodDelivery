@@ -19,7 +19,7 @@ const Navbar = () => {
     <>
     <nav className="navbar navbar-expand-lg navbar-dark" style={{'background' :"#CC313D"}}>
         <div className="container-fluid">
-            <Link className="navbar-brand" to={'/'}>FeastFinder</Link>
+            <Link className="navbar-brand text-dark" to={'/'}> <span style={{'fontFamily' : "Lora" , 'fontStyle':"italic" , "fontWeight" :"bolder"}}> FeastFinder </span> <img src="./image/foodlogo.png" alt="" style={{'width':"30px" , 'height' : "30px" , "borderRadius" : "100%"}} /></Link>
             <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span className="navbar-toggler-icon"></span>
             </button>
@@ -29,19 +29,7 @@ const Navbar = () => {
                 <Link className={`nav-link ${location==="/"? "active" : ""}`} aria-current="page" to={'/'}> Home</Link>
                 </li>
                 <li className="nav-item">
-                <Link className={`nav-link ${location==="/orders"? "active" : ""}`} aria-current="page" to={'/orders'}> Orders</Link>
-                </li>
-                
-                <li className="nav-item dropdown">
-                {/* <Link className="nav-link dropdown-toggle" to={'/'} role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                    Dropdown
-                </Link> */}
-                {/* <ul className="dropdown-menu">
-                    <li><a className="dropdown-item" to={'/'}>Action</a></li>
-                    <li><a className="dropdown-item" to={'/'}>Another action</a></li>
-                    <li><hr className="dropdown-divider"/></li>
-                    <li><a className="dropdown-item" to={'/'}>Something else here</a></li>
-                </ul> */}
+                <Link className={`nav-link ${location==="/orders"? "active" : ""}`} aria-current="page" to={'/orders'}> Your_Orders</Link>
                 </li>
                
             </ul>

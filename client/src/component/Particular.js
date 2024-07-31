@@ -2,24 +2,26 @@ import axios from 'axios';
 import React, { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
 import FoodCard from '../subcomponent/FoodCard';
+import { useAuthContext } from '../context/AuthContext';
 
 const Particular = () => {
     const {categoryname} = useParams();
     const [Fooditms , setFood] = useState([]);
+    const {toastfn , errortoastfn} = useAuthContext()
     console.log(Fooditms);
     // function to fetch the data from backend
     const getthedata =async()=>{
         try {
             if(categoryname){
                 const res = await axios.get(`http://localhost:8080/api/food/foodofsinglesamecat/${categoryname}`);
-                console.log(res);
+                // console.log(res);
                 if(res?.data?.success){
                     setFood(res.data.data);
                 }
             }
         } catch (error) {
             console.log(error);
-            window.alert("something went wrong , Please try again later.")
+            errortoastfn("something went wrong , Please try again later.")
         }
     }
 
