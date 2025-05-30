@@ -1,5 +1,5 @@
 import { createContext, useContext, useEffect, useState } from "react";
-import { useLocation, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import {toast } from 'react-toastify';
 import { jwtDecode } from "jwt-decode";
 
@@ -13,8 +13,10 @@ const AuthValue = (props)=>{
     console.log(userID);
     const navigate = useNavigate();
 
-    // console.log("userToken" , userToken);
+    console.log("userToken" , userToken);
     const decoded =  userToken ?  jwtDecode(userToken) : null;
+    console.log("decoded " , decoded);
+    
 
     // function to show success toast
     const toastfn = (data)=>toast.success(data ,{
